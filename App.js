@@ -9,8 +9,13 @@
 
 import React, { Component } from 'react';
 import { StatusBar, StyleSheet, Text, View } from 'react-native';
-import Login from './src/pages/Login';
+import {Login, MainFeed} from './src/pages';
+import {SwitchNavigator, TabNavigator} from "react-navigation";
 
+// const MainStack = createSwitchNavigator({
+//   login: Login,
+//   main: MainFeed
+// });
 
 export default class App extends Component<{}> {
   render() {
@@ -19,7 +24,7 @@ export default class App extends Component<{}> {
         <StatusBar backgroundColor='#1c313a'
           barStyle="light-content">
         </StatusBar>
-        <Login></Login>
+        <Login />
       </View>
     );
   }

@@ -8,32 +8,32 @@ export default class Form extends Component {
         super(props);
         this.toggleSwitch = this.toggleSwitch.bind(this);
         this.state = {
-            showPassword: true,
+            
         }
     }
-
+    login() {
+        
+    }
     toggleSwitch() {
         this.setState({ showPassword: !this.state.showPassword });
     }
 
     render() {
         return (
-            <View style={styles.container}>
+                <View style={styles.container}>
                 <TextInput style={styles.inputBox}
                     placeholder="Email"></TextInput>
                 <TextInput style={styles.inputBox}
                     placeholder="Password"
                     secureTextEntry={this.state.showPassword}
                     onChangeText={(password) => this.setState({ password })}></TextInput>
-                <Switch
-                    onValueChange={this.toggleSwitch}
-                    value={!this.state.showPassword}
-                />
-                <TouchableOpacity style={styles.button}>
+                <TouchableOpacity style={styles.button} onPress={ () => {
+                    this.login();
+                }}
+                >
                     <Text style={styles.buttonText}>Login</Text>
                 </TouchableOpacity>
             </View>
-
         );
     }
 }
