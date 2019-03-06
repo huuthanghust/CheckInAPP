@@ -9,12 +9,19 @@
 
 import React, { Component } from 'react';
 import { StatusBar, StyleSheet, Text, View } from 'react-native';
-import {Login, MainFeed} from './src/pages';
-import { createSwitchNavigator, createAppContainer} from "react-navigation";
+import {Login, MainFeed, CheckIn, TimeSheet} from './src/pages';
+import { createBottomTabNavigator, createSwitchNavigator, createAppContainer} from "react-navigation";
+
+const Tabs = createBottomTabNavigator({
+  feed: MainFeed,
+  checkin: CheckIn,
+  timeSheet: TimeSheet
+});
+
 
 const MainStack = createSwitchNavigator({
     login: Login,
-    main: MainFeed
+    main: Tabs
 });
 
 const MainStackContainer = createAppContainer(MainStack);
@@ -22,7 +29,6 @@ const MainStackContainer = createAppContainer(MainStack);
 export default class App extends Component {
   
   render() {
-    console.log("AppComponent : render()");
     return (
       <View style={styles.container}>
         <StatusBar backgroundColor='#1c313a'
