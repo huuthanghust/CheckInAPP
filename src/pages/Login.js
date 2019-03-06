@@ -13,12 +13,13 @@ export default class Login extends Component {
 
     }
   }
+  
   render() {
     return (
       <ScrollView style={{flex: 1}}>
         <View style={styles.container}>
         <Logo></Logo>
-        <Form></Form>
+        <Form navigation={this.props.navigation}></Form>
         <View style={styles.forgotPs}>
         <Text> Forgot your password?</Text>
         </View>

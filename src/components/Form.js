@@ -12,7 +12,7 @@ export default class Form extends Component {
         }
     }
     login() {
-        
+        this.props.navigation.navigate("main");
     }
     toggleSwitch() {
         this.setState({ showPassword: !this.state.showPassword });

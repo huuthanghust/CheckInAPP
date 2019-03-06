@@ -10,21 +10,25 @@
 import React, { Component } from 'react';
 import { StatusBar, StyleSheet, Text, View } from 'react-native';
 import {Login, MainFeed} from './src/pages';
-import {SwitchNavigator, TabNavigator} from "react-navigation";
+import { createSwitchNavigator, createAppContainer} from "react-navigation";
 
-// const MainStack = createSwitchNavigator({
-//   login: Login,
-//   main: MainFeed
-// });
+const MainStack = createSwitchNavigator({
+    login: Login,
+    main: MainFeed
+});
 
-export default class App extends Component<{}> {
+const MainStackContainer = createAppContainer(MainStack);
+
+export default class App extends Component {
+  
   render() {
+    console.log("AppComponent : render()");
     return (
       <View style={styles.container}>
         <StatusBar backgroundColor='#1c313a'
           barStyle="light-content">
         </StatusBar>
-        <Login />
+        <MainStackContainer />
       </View>
     );
   }
