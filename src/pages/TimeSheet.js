@@ -3,11 +3,11 @@ import {
  View, StyleSheet, Text
 } from 'react-native';
 
-export default class MainFeed extends Component {
+export default class TimeSheet extends Component {
     render() {
         return (
             <View style={{flex: 1}}>
-                <Text style = {styles.mainFeed}> This is the main feed</Text>
+                <Text style = {styles.mainFeed}> Check in here</Text>
             </View>
         )
     }
@@ -17,6 +17,5 @@ const styles = StyleSheet.create({
     mainFeed: {
         justifyContent: 'center',
         alignItems: 'center',
-        color: 'red'
     }
 });
