@@ -28,7 +28,7 @@ class FlatListItem extends Component {
         }}
         onPress={() =>
           this.props.navigation.navigate ('moreInfo', {
-            name: this.props.item.make,
+            name: this.props.item.make, model: this.props.item.model, price: this.props.item.price
           })}
       >
 
