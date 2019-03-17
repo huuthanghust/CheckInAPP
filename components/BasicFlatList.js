@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {FlatList, View, Text, StyleSheet, TouchableOpacity} from 'react-native';
 import {flatListData} from '../data/flatListData';
-
+import HeaderButton from '../drawer/HeaderButton';
 const colors = [
   '#5B6BC0',
   '#EE534F',
@@ -17,6 +17,7 @@ const colors = [
 
 class FlatListItem extends Component {
   render () {
+    const { navigate } = this.props.navigation;
     return (
       <TouchableOpacity
         style={{
@@ -31,7 +32,6 @@ class FlatListItem extends Component {
             name: this.props.item.make, model: this.props.item.model, price: this.props.item.price
           })}
       >
-
         <Text style={styles.flatListItem}>{this.props.item.make}</Text>
         <Text style={styles.flatListItem}>{this.props.item.model}</Text>
       </TouchableOpacity>
@@ -43,6 +43,8 @@ export default class BasicFlatList extends Component {
   render () {
     return (
       <View style={styles.main}>
+      <View><HeaderButton onPress={() => navigate('DrawerOpen')} /></View>
+      
         <FlatList
           data={flatListData}
           renderItem={({item, index}) => {

@@ -7,10 +7,9 @@ export default class Drawer extends Component {
     return (
       <View style = {styles.container}>
         <Text>
-          Drawer
+          This is Drawer
         </Text>
-        <Button onPress={() => navigate ('')} title="Setting" />
-        <Button onPress={() => navigate ('')} title="About us" />
+        <Button onPress={() => navigate ('AccountSetting')} title="Setting Account" />
       </View>
     );
   }
