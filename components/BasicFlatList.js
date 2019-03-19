@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {FlatList, View, Text, StyleSheet, TouchableOpacity} from 'react-native';
+import {FlatList, View, Text, StyleSheet, TouchableOpacity, Image} from 'react-native';
 import {flatListData} from '../data/flatListData';
 import HeaderButton from '../drawer/HeaderButton';
 const colors = [
@@ -39,12 +39,28 @@ class FlatListItem extends Component {
   }
 }
 
+const MenuButton = (props) => (
+  <TouchableOpacity onPress = { () => { 
+    console.log("Navigation object ", props);
+    props.navigation.openDrawer();}}>
+  
+  <Image style = {{width: 30, height: 30}} source = {require('../src/images/menu.png')}></Image>
+  </TouchableOpacity>
+)
+
 export default class BasicFlatList extends Component {
+  static navigationOptions = ({navigation}) => ({
+      title: 'All subject',
+      headerStyle: {
+        backgroundColor: 'red',
+      },
+      headerLeft: <MenuButton navigation = {navigation} />,
+      headerTintColor: 'white'
+  });
+
   render () {
     return (
       <View style={styles.main}>
-      <View><HeaderButton onPress={() => navigate('DrawerOpen')} /></View>
-      
         <FlatList
           data={flatListData}
           renderItem={({item, index}) => {
