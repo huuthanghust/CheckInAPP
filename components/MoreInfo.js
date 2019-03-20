@@ -14,7 +14,36 @@ export default class MoreInfo extends Component {
       },
     };
   };
+  constructor(props) {
+    super(props);
+    this.state = {
+      time: '',
+      latitude: null,
+      longitude: null,
+      error: null
+    };
+  }
+  componentDidMount() {
+    this.Clock = setInterval( () => this.GetTime(), 1000 );
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        console.log('Start to get location');
+        console.log(position);
+      }
+    );
 
+  }
+
+  GetTime() {
+    var date, TimeType, hour, minutes, seconds, fullTime;
+    date = new Date();
+    this.setState({
+      time:date
+    });
+  }
+  showTime=()=>{
+    alert(this.state.time.toString());
+  }
   render () {
     const name = this.props.navigation.getParam ('name');
     const price = this.props.navigation.getParam ('price');
@@ -27,7 +56,9 @@ export default class MoreInfo extends Component {
           </Text>
         </View>
         <View style={styles.touchableOpacityView}>
-          <TouchableOpacity style={styles.touchableOpacity}>
+          <TouchableOpacity style={styles.touchableOpacity}
+          onPress = {() => this.showTime()}
+          >
             <Text style={styles.touchableText}>
               ROLL CALL
             </Text>

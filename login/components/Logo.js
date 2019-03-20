@@ -1,13 +1,12 @@
-
 import React, { Component } from 'react';
 import { StyleSheet, Image, View, Text } from 'react-native';
 
 
-export default class Logo extends Component<{}> {
+export default class Logo extends Component {
     render() {
         return (
             <View style = {styles.container}>
-                <Image style={{ width: 60, height: 90 }} source={require('../images/logo.png')} />
+                <Image style={{ width: 80, height: 110 }} source={require('../../images/logo.png')} />
                 <Text style = {styles.textCheckIn}>HỆ THỐNG ĐIỂM DANH</Text>
             </View>
 
@@ -18,13 +17,13 @@ export default class Logo extends Component<{}> {
 const styles = StyleSheet.create({
     container: {
         flex: 2,
-        justifyContent: 'center',
+        justifyContent: 'flex-end',
         alignItems: 'center',
         backgroundColor: '#455A64',
     },
     textCheckIn: {
-        fontSize: 17,
-        marginVertical: 10,
+        fontSize: 18,
+        marginVertical: 20,
         color: 'rgba(255,255,255,0.7)'
     }
 });

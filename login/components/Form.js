@@ -8,7 +8,6 @@ import {
   TouchableOpacity,
 } from 'react-native';
 
-import config from '../config';
 
 export default class Form extends Component {
   constructor (props) {
@@ -30,22 +29,22 @@ export default class Form extends Component {
   }
 
   login () {
-    fetch('http://10.61.184.35:3000/api/signup', {
-        method: 'POST',
-        headers: {
-          Accept: 'application/json',
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(
-            this.state.credentials
-        ),
-      }).then (data => {
-          alert(JSON.stringify(data))
-      })
-      .catch(err => {
-          alert(err);
-      });
-    // this.props.navigation.navigate ('main');
+    // fetch('http://10.61.184.35:3000/api/signup', {
+    //     method: 'POST',
+    //     headers: {
+    //       Accept: 'application/json',
+    //       'Content-Type': 'application/json',
+    //     },
+    //     body: JSON.stringify(
+    //         this.state.credentials
+    //     ),
+    //   }).then (data => {
+    //       alert(JSON.stringify(data))
+    //   })
+    //   .catch(err => {
+    //       alert(err);
+    //   });
+     this.props.navigation.navigate ('mainStackWithDRawer');
   }
   toggleSwitch () {
     this.setState ({showPassword: !this.state.showPassword});
@@ -79,9 +78,9 @@ export default class Form extends Component {
 
 const styles = StyleSheet.create ({
   container: {
-    flex: 2,
+    flex: 3,
     justifyContent: 'center',
-    alignItems: 'center',
+    alignItems: 'flex-start',
     backgroundColor: '#455A64',
   },
   inputBox: {

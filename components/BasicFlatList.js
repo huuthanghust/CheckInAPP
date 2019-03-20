@@ -44,7 +44,7 @@ const MenuButton = (props) => (
     console.log("Navigation object ", props);
     props.navigation.openDrawer();}}>
   
-  <Image style = {{width: 30, height: 30}} source = {require('../src/images/menu.png')}></Image>
+  <Image style = {{width: 30, height: 30}} source = {require('../images/menu.png')}></Image>
   </TouchableOpacity>
 )
 
