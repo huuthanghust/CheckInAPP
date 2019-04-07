@@ -7,7 +7,7 @@ import {
   TextInput,
   TouchableOpacity,
 } from 'react-native';
-
+import config from '../../config';
 
 export default class Form extends Component {
   constructor (props) {
@@ -29,22 +29,32 @@ export default class Form extends Component {
   }
 
   login () {
-    // fetch('http://10.61.184.35:3000/api/signup', {
-    //     method: 'POST',
-    //     headers: {
-    //       Accept: 'application/json',
-    //       'Content-Type': 'application/json',
-    //     },
-    //     body: JSON.stringify(
-    //         this.state.credentials
-    //     ),
-    //   }).then (data => {
-    //       alert(JSON.stringify(data))
-    //   })
-    //   .catch(err => {
-    //       alert(err);
-    //   });
-     this.props.navigation.navigate ('mainStackWithDRawer');
+    fetch(config.baseUrl + 'login', {
+        method: 'POST',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(
+            this.state.credentials
+        ),
+      })
+      .then((response) => response.json())
+      .then ((responseJson) => {
+        console.log("data json", responseJson);
+        console.log("accountId ", responseJson.id);
+        console.log("role ", responseJson.role);
+        if (responseJson.id !=null){
+          this.props.navigation.navigate ('mainStackWithDRawer', {role: responseJson.role, accountID: responseJson.id});
+        }
+        else {
+          alert("Đăng nhập không thành công");
+        }
+        
+      })
+      .catch(err => {
+          alert(err);
+      });
   }
   toggleSwitch () {
     this.setState ({showPassword: !this.state.showPassword});

@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
-import {FlatList, View, Text, StyleSheet, TouchableOpacity, Image} from 'react-native';
+import {FlatList, View, Text, StyleSheet, TouchableOpacity, Image, ActivityIndicator} from 'react-native';
 import {flatListData} from '../data/flatListData';
 import HeaderButton from '../drawer/HeaderButton';
+import config from '../config';
 const colors = [
   '#5B6BC0',
   '#EE534F',
@@ -39,6 +40,7 @@ class FlatListItem extends Component {
   }
 }
 
+//thangnh_nut nhan xo ra drawer
 const MenuButton = (props) => (
   <TouchableOpacity onPress = { () => { 
     console.log("Navigation object ", props);
@@ -48,7 +50,24 @@ const MenuButton = (props) => (
   </TouchableOpacity>
 )
 
+// flatlist tong 
 export default class BasicFlatList extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      isLoading: true,
+      dataSource: null
+    }
+  }
+
+  componentDidMount () {
+    return fetch(config.baseUrl+'timetable?role=${param}&accountID=${param}&semesterID=${param}',{
+      method: 'GET'
+    }).then((response) => response.json())
+    .then((responseJson) => {
+      isLoading:false
+    })
+  }
   static navigationOptions = ({navigation}) => ({
       title: 'All subject',
       headerStyle: {
