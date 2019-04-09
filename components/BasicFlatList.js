@@ -61,11 +61,15 @@ export default class BasicFlatList extends Component {
   }
 
   componentDidMount () {
-    return fetch(config.baseUrl+'timetable?role=${param}&accountID=${param}&semesterID=${param}',{
+    const navigationParam = {role: this.props.navigation.getParam('role'), accountID: this.props.navigation.getParam('accountID')};
+    return fetch(config.baseUrl+'timetable?role=${navigationParam.role}&accountID=${navigationParam.accountID}&semesterID=1',{
       method: 'GET'
     }).then((response) => response.json())
     .then((responseJson) => {
-      isLoading:false
+      this.setState ({
+        isLoading: false,
+        dataSource: responseJson,
+      });
     })
   }
   static navigationOptions = ({navigation}) => ({
